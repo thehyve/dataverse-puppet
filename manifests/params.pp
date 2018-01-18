@@ -200,7 +200,7 @@ class dataverse::params {
     }
     'debian': {
       $rpackager_rstudio_libraries = $::lsbdistcodename ? {
-        'trusty' => [
+        /(trusty|xenial)/ => [
           'r-base',
           'r-base-core',
           'r-base-dev',
@@ -211,7 +211,7 @@ class dataverse::params {
           'libapreq2-3',
           'r-cran-mcmcpack'
         ],
-        /(precise|default)/ => [
+        /precise/ => [
           'r-base',
           'r-base-core',
           'r-base-dev',
@@ -228,14 +228,29 @@ class dataverse::params {
       }
 
       $apache2_shibboleth_lib = $::lsbdistcodename ? {
-        'trusty' => '/usr/lib/apache2/modules/mod_shib2.so' ,
+        /(trusty|xenial)/ => '/usr/lib/apache2/modules/mod_shib2.so' ,
         /(precise|default)/ => '/usr/lib/apache2/modules/mod_shib_22.so'
       }
       $tworavens_mod_r_so_file = '/usr/lib/apache2/modules/mod_R.so'
       $rpackager_r_site_library = '/usr/local/lib/R/site-library'
 
       $apache2_mods = $::lsbdistcodename ? {
-        'trusty' => [
+        /xenial/ => [
+          'apache::mod::alias',
+          'apache::mod::authn_core',
+          'apache::mod::autoindex',
+          'apache::mod::ssl',
+          'apache::mod::deflate',
+          'apache::mod::dir',
+          'apache::mod::negotiation',
+          'apache::mod::proxy',
+          'apache::mod::proxy_ajp',
+          'apache::mod::reqtimeout',
+          'apache::mod::rewrite',
+          'apache::mod::setenvif',
+        ]
+      ,
+        /trusty/ => [
           'apache::mod::alias',
           'apache::mod::authn_core',
           'apache::mod::autoindex',
@@ -251,7 +266,7 @@ class dataverse::params {
           'apache::mod::setenvif',
         ]
       ,
-        /(precise|default)/ => [
+        /precise/ => [
           'apache::mod::alias',
           'apache::mod::auth_basic',
           'apache::mod::authn_file',
