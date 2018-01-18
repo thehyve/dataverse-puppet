@@ -127,7 +127,7 @@ class dataverse::rserve (
   class { 'dataverse::rserve::service':
     require => [
       Class['dataverse::rpackager'],
-      dataverse::rpackager::package['Rserve'],
+      Dataverse::Rpackager::Package['Rserve'],
     ];
   }
 
