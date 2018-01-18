@@ -194,7 +194,7 @@
     <java-config system-classpath="" classpath-suffix="">
 
         <!-- memory options -->
-        <% @glassfish_jvmoption.sort.each do |option| -%>
+        <% scope.lookupvar('dataverse::dataverse::glassfish_jvmoption').sort.each do |option| -%>
             <jvm-options><%= option %></jvm-options>
         <% end -%>
 
