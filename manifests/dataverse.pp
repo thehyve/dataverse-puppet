@@ -145,7 +145,6 @@ class dataverse::dataverse (
   $doi_baseurlstring                      = $dataverse::params::dataverse_doi_baseurlstring,
   $doi_username                           = $dataverse::params::dataverse_doi_username,
   $doi_password                           = $dataverse::params::dataverse_doi_password,
-  $files_directory                        = $dataverse::params::dataverse_files_directory,
   $fqdn                                   = $dataverse::params::dataverse_fqdn,
   $glassfish_create_domain                = $dataverse::params::dataverse_glassfish_create_domain,
   $glassfish_domain_name                  = $dataverse::params::dataverse_glassfish_domain_name,
