@@ -71,6 +71,9 @@
 # [user='rserve']
 #   The username for connecting to the Binary R server daemon.
 #
+# [group='rserve']
+#   The group name of the rserve process
+#
 # [umask=0]
 #   Controls how file permissions are set for files.
 #
@@ -105,6 +108,7 @@ class dataverse::rserve (
   $su                = $dataverse::params::rserve_su,
   $uid               = $dataverse::params::rserve_uid,
   $user              = $dataverse::params::rserve_user,
+  $group             = $dataverse::params::rserve_group,
   $umask             = $dataverse::params::rserve_umask,
   $workdir           = $dataverse::params::rserve_workdir,
 ) inherits dataverse::params {

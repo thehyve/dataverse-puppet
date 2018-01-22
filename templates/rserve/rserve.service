@@ -1,0 +1,14 @@
+#! Rserve systemd unit file
+
+[Unit]
+Description=Rserve
+
+[Service]
+Type=forking
+PIDFile=/var/run/rserve/rserve.pid
+User=<%= scope.lookupvar('dataverse::rserve::rserve_user') %>
+Group=<%= scope.lookupvar('dataverse::rserve::rserve_user') %>
+ExecStart=/usr/bin/R CMD Rserve --quiet --vanilla --RS-pidfile /var/run/rserve/rserve.pid --slave
+
+[Install]
+WantedBy=multi-user.target

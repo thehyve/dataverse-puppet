@@ -52,12 +52,28 @@ class dataverse::rserve::service {
       mode    => '0755';
   }
 
-  service {
-    'rserve':
-      ensure     => running,
-      enable     => true,
-      path       => '/etc/init.d/',
-      hasrestart => true ;
+  if ( $facts['lsbdistrelease'] == '16.04' or $facts['lsbdistid'] == 'Ubuntu' ) {
+    file { '/var/run/rserve' :
+        ensure => directory,
+        mode   => '0755',
+        owner  => $dataverse::rserve::rserve_user,
+    } ->
+    ::systemd::unit_file  { 'rserve.service':
+        content =>  template ('dataverse/rserve/rserve.service') ,
+    } ->
+    service {  'rserve' :
+        ensure   => running,
+        provider => 'systemd',
+    }
+  }
+  else {
+    service {
+      'rserve':
+        ensure     => running,
+        enable     => true,
+        path       => '/etc/init.d/',
+        hasrestart => true ;
+    }
   }
 
 }

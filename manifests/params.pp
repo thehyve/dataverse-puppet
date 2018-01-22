@@ -91,6 +91,7 @@ class dataverse::params {
   $dataverse_rserve_password                        = 'rserve'
   $dataverse_rserve_port                            = 6311
   $dataverse_rserve_user                            = 'rserve'
+  $dataverse_rserve_group                           = 'rserve'
   $dataverse_site_url                               = "https://${dataverse_fqdn}:${dataverse_port}"
 
   $tworavens_packages                               = {
