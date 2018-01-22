@@ -18,7 +18,7 @@ class dataverse::tworavens::packages {
 # r packages from the repo
   create_resources(dataverse::rpackager::package, $dataverse::params::tworavens_packages)
 
-  archive { 'Zelig-master': # installing package Zelig (from local GitHub). This is 5.0.6 at the time of writing.
+  archive_hyve { 'Zelig-master': # installing package Zelig (from local GitHub). This is 5.0.6 at the time of writing.
     ensure           => present,
     url              =>  $dataverse::params::rpackager_packages_zelig,
     target           => '/opt/rpackager',

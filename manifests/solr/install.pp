@@ -37,7 +37,7 @@ class dataverse::solr::install {
   notify {
     'parent dir':
       message => "Parent directory=${dataverse::solr::parent_dir}" ;
-  }->archive { 'apache-solr':
+  }->archive_hyve { 'apache-solr':
     ensure           => present,
     url              => $solr_url,
     target           => '/opt/solr', # Just a temporary place.

@@ -67,7 +67,7 @@ class dataverse::tworavens::install {
       group   => $::apache::user;
   }
 
-  archive { 'tworavens':
+  archive_hyve { 'tworavens':
     ensure           => present,
     url              => $dataverse::tworavens::package,
     target           => '/opt/tworavens',

@@ -17,7 +17,7 @@ class dataverse::dataverse::war {
 # We only need maven for the development environment
   if $dataverse::dataverse::repository == 'git' {
 
-    archive { 'maven3':
+    archive_hyve { 'maven3':
       ensure           => present,
       url              => 'ftp://mirror.reverse.net/pub/apache/maven/maven-3/3.3.3/binaries/apache-maven-3.3.3-bin.zip',
       target           => '/usr/src', # Just a temporary place.
