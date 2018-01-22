@@ -234,6 +234,10 @@ class dataverse::params {
       $tworavens_mod_r_so_file = '/usr/lib/apache2/modules/mod_R.so'
       $rpackager_r_site_library = '/usr/local/lib/R/site-library'
 
+      if ( $facts['lsbdistrelease'] == '16.04' and $facts['lsbdistid'] == 'Ubuntu' ) {
+         ensure_packages ( [unzip] )
+      }
+
       $apache2_mods = $::lsbdistcodename ? {
         /xenial/ => [
           'apache::mod::alias',
