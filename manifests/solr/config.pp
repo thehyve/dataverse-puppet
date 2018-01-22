@@ -20,11 +20,23 @@ class dataverse::solr::config {
       owner   => $dataverse::solr::jetty_user,
       group   => $dataverse::solr::jetty_user,
       recurse => true;
+    "${dataverse::solr::jetty_home}/etc":
+      ensure  => directory,
+      owner   => $dataverse::solr::jetty_user,
+      group   => $dataverse::solr::jetty_user;
     "${dataverse::solr::jetty_home}/etc/jetty-logging.xml":
       ensure  => file,
       owner   => $dataverse::solr::jetty_user,
       group   => $dataverse::solr::jetty_user,
       source  => 'puppet:///modules/dataverse/solr/jetty-logging.xml';
+    "${dataverse::solr::solr_home}":
+      ensure  => directory,
+      owner   => $dataverse::solr::jetty_user,
+      group   => $dataverse::solr::jetty_user;
+    "${dataverse::solr::solr_home}/${dataverse::solr::core}":
+      ensure  => directory,
+      owner   => $dataverse::solr::jetty_user,
+      group   => $dataverse::solr::jetty_user;
     "${dataverse::solr::solr_home}/${dataverse::solr::core}/conf":
       ensure  => file,
       recurse => true,
