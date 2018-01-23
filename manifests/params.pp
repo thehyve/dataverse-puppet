@@ -147,6 +147,7 @@ class dataverse::params {
   $solr_jetty_java_options                          = '-Xmx512m'
   $solr_jetty_port                                  = '8983'
   $solr_jetty_user                                  = 'solr'
+  $solr_jetty_group                                 = 'solr'
   $solr_url                                         = 'http://archive.apache.org/dist/lucene/solr'
   $solr_version                                     = '4.6.0'
   $solr_parent_dir                                  = "/home/${solr_jetty_user}"

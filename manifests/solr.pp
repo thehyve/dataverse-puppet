@@ -31,6 +31,9 @@
 # [jetty_user='solr']
 #   The user running the Jetty Solr instance.
 #
+# [jetty_group='solr']
+#   The group running the Jetty Solr instance.
+#
 # [solr_home='/home/solr/solr-4.6.0/example/solr']
 #   The Solr home used for the jvm setting -Dsolr.solr.home.
 #
@@ -56,6 +59,7 @@ class dataverse::solr (
   $jetty_java_options = $dataverse::params::solr_jetty_java_options,
   $jetty_port         = $dataverse::params::solr_jetty_port,
   $jetty_user         = $dataverse::params::solr_jetty_user,
+  $jetty_group        = $dataverse::params::solr_jetty_group,
   $parent_dir         = $dataverse::params::solr_parent_dir,
   $solr_home          = $dataverse::params::solr_solr_home,
   $url                = $dataverse::params::solr_url,

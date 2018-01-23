@@ -1,0 +1,14 @@
+#! Solr systemd unit file
+
+[Unit]
+Description=Solr
+
+[Service]
+Type=forking
+PIDFile=<%= scope.lookupvar('dataverse::solr::solr_user_home') %>/jetty-<%= scope.lookupvar('dataverse::solr::jetty_port') %>.pid
+User=<%= scope.lookupvar('dataverse::solr::jetty_user') %>
+Group=<%= scope.lookupvar('dataverse::solr::jetty_group') %>
+ExecStart=<%= scope.lookupvar('dataverse::solr::parentdir') %>/solr-<%= scope.lookupvar('dataverse::solr::solr_version') %>/bin/solr start -p <%= scope.lookupvar('dataverse::solr::jetty_port') %>
+
+[Install]
+WantedBy=multi-user.target
