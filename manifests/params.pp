@@ -25,6 +25,7 @@ class dataverse::params {
   $database_createrole                              = false
   $database_dbname                                  = 'dvndb'
   $database_encoding                                = 'UTF-8'
+  $database_user                                    = 'dvnApp'
   $database_hba_rule                                = {
     'IPv4 local connections' => {
       'description' => 'Open up a IP4 connection from localhost',
@@ -50,7 +51,6 @@ class dataverse::params {
   $database_password                                = 'dvnAppPass'
   $database_replication                             = false
   $database_superuser                               = false
-  $database_user                                    = 'dvnApp'
   $database_version                                 = '9.3'
 
   $dataverse_auth_password_reset_timeout_in_minutes = 60
