@@ -19,9 +19,6 @@ class dataverse::solr::service {
 
   if ( $facts['lsbdistrelease'] == '16.04' or $facts['lsbdistid'] == 'Ubuntu' ) {
     anchor { 'dataverse::solr::service::begin': }->
-    ::systemd::unit_file  { 'solr.service':
-        content =>  template ('dataverse/solr/solr.service') ,
-    } ->
     service {  'solr' :
         ensure   => running,
         provider => 'systemd',
