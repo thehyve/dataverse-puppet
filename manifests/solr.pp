@@ -64,9 +64,9 @@ class dataverse::solr (
   $solr_home          = $dataverse::params::solr_solr_home,
   $url                = $dataverse::params::solr_url,
   $version            = $dataverse::params::solr_version,
+  $dataverse_package  = $dataverse::params::dataverse_package,
 ) inherits dataverse::params {
 
-  $dataverse_package = $dataverse::params::dataverse_package
 
   anchor{ 'dataverse::solr::begin': }
 
