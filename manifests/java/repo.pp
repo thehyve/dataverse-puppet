@@ -38,10 +38,15 @@ class dataverse::java::repo {
       $java_alternative_path = '/usr/lib/jvm/java-8-oracle/bin/java'
 
       include ::apt
+
+      $keydata = {
+            'id'     => 'EEA14886',
+            'server' => 'keyserver.ubuntu.com',
+      }
+
       apt::source { 'webupd8team':
         comment    => 'Oracle Java 8 installer',
-        key        => 'EEA14886',
-        key_server => 'hkp://keyserver.ubuntu.com:80',
+        key        => $keydata,
         location   => 'http://ppa.launchpad.net/webupd8team/java/ubuntu',
         release    => $lsbdistcodename,
         repos      => 'main',
